@@ -79,6 +79,6 @@ npm run build
 
 ## GitHub Pages
 
-`.github/workflows/pages.yml` 在推送到 `main` 时用 `npm ci`、`npm test` 和 `npm run build` 生成 `dist/`，再交给官方的 `actions/deploy-pages`。权限只有 `contents: read`、`pages: write` 和 `id-token: write`。
+`.github/workflows/pages.yml` 在推送到 `main` 时用 `npm install`、`npm test` 和 `npm run build` 生成 `dist/`，再交给官方的 `actions/deploy-pages`。权限只有 `contents: read`、`pages: write` 和 `id-token: write`。仓库里还没有 `package-lock.json`，所以安装这一步用 `npm install`，不是 `npm ci`。
 
 仓库设置里的 Pages 来源需要选 **GitHub Actions**。工作流文件本身不会替你打开这个开关。站点路径按 `base: /bead-workbench/` 计算。在 Pages 真正发布之前，不要把任何 github.io 地址当成已经可以访问。
