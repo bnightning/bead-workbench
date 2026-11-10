@@ -14,6 +14,7 @@ export interface ExportMeta {
   paletteNotice: string;
   quote: QuoteResult | null;
   quoteMessage: string | null;
+  laborLine?: string | null;
 }
 
 const INK = "#241C16";
@@ -160,7 +161,7 @@ export function renderPatternCanvas(grid: GridResult, meta: ExportMeta): HTMLCan
   const legendRows = Math.max(grid.counts.length, 1);
   const legendHeight = 48 + legendRows * 28;
   const width = margin * 2 + board.width + legendWidth + 28;
-  const height = margin * 2 + 96 + Math.max(board.height, legendHeight) + 210;
+  const height = margin * 2 + 96 + Math.max(board.height, legendHeight) + 250;
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
@@ -230,7 +231,8 @@ export function renderPatternCanvas(grid: GridResult, meta: ExportMeta): HTMLCan
   } else {
     lines.push(meta.quoteMessage ?? "成本还没算清，图纸上未写金额。");
   }
-  lines.push("默认单价和毛利率若未改过，只是示例假设，不是市场报价。");
+  if (meta.laborLine) lines.push(meta.laborLine);
+  lines.push("默认单价、速度和毛利率若未改过，只是示例假设，不是市场报价，也不承诺制作耗时。");
   for (const line of lines) {
     context.fillStyle = INK;
     context.fillText(line, margin, textY);
