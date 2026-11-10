@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: "Avenir Next", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Noto Sans SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "Droid Sans Fallback", "Segoe UI", sans-serif;
+  --font-serif: "Iowan Old Style", Palatino, "Palatino Linotype", "Songti SC", "Noto Serif CJK SC", "Noto Serif SC", "STSong", "WenQuanYi Micro Hei", "Droid Sans Fallback", serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-lg: var(--radius);
+}
+
+:root {
+  --background: #efe8dc;
+  --foreground: #241c16;
+  --card: #fbf7f0;
+  --card-foreground: #241c16;
+  --primary: #9d2f28;
+  --primary-foreground: #fff8f2;
+  --secondary: #efe4d4;
+  --secondary-foreground: #241c16;
+  --muted: #e7dccb;
+  --muted-foreground: #6d6256;
+  --accent: #f3e6c8;
+  --accent-foreground: #241c16;
+  --destructive: #9d2f28;
+  --destructive-foreground: #fff8f2;
+  --border: #ddcfc0;
+  --input: #ddcfc0;
+  --ring: #9d2f28;
+  --radius: 0.8rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(920px 420px at 0% -12%, rgba(157, 47, 40, 0.09), transparent 52%),
+      var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.checker {
+  background-color: #f3ecdf;
+  background-image:
+    linear-gradient(45deg, #e4d9c8 25%, transparent 25%),
+    linear-gradient(-45deg, #e4d9c8 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e4d9c8 75%),
+    linear-gradient(-45deg, transparent 75%, #e4d9c8 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 0 7px, 7px -7px, -7px 0;
+}
