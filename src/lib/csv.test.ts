@@ -41,4 +41,31 @@ describe("CSV 公式注入", () => {
     expect(csv).toContain("合计,,,3,4,,0.20");
     expect(csv).toContain("不是客户订单");
   });
+
+  it("写出工时来源和参数，并挡住说明里的公式", () => {
+    const csv = buildBeadCsv({
+      rows: [],
+      usedTotal: 256,
+      purchaseTotal: 277,
+      beadCostYuan: "13.85",
+      note: "示例",
+      labor: {
+        sourceLabel: "自动估算",
+        chargedHours: "1.27",
+        speed: "300",
+        prepMinutes: "10.00",
+        finishMinutes: "15.00",
+        beadMinutes: "51.20",
+        totalMinutes: "76.20",
+        laborYuan: "31.75",
+        note: "=CMD()",
+      },
+    });
+    expect(csv).toContain("工时来源,自动估算");
+    expect(csv).toContain("计入成本的工时（小时）,1.27");
+    expect(csv).toContain("拼豆速度（颗/小时）,300");
+    expect(csv).toContain("人工成本（元）,31.75");
+    expect(csv).toContain("'=CMD()");
+    expect(csv).not.toContain(",=CMD()");
+  });
 });
